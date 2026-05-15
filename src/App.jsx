@@ -5,8 +5,8 @@ import Lista from './componentes/Lista.jsx'
 import './App.css'
 
 function App() {
-  const [input, setInput] = useState("")
-  const [tareas, setTareas] = useState([])
+  const [input, setInput] = useState("") // INGRESO LOS DATOS
+  const [tareas, setTareas] = useState([]) //array
 
 
   const handleClick = () => {
@@ -14,18 +14,18 @@ function App() {
     const nuevaTarea = {
       id: Date.now(),
       texto: input,
-      completado: false
+      completado: false //esto luego lo doy vuelta con !
     }
     setTareas([...tareas, nuevaTarea]) 
     setInput("") 
   }
 
   const eliminarTarea = (id) => {
-    setTareas(tareas.filter(t => t.id !== id))
+    setTareas(tareas.filter(t => t.id !== id)) // filter es para que conserve el que no tenga el id clickeado (borrado)
   }
 
   const toggleTarea = (id) => {
-  setTareas(tareas.map(t => 
+  setTareas(tareas.map(t => // busca el clickeado para cambiarlo true/false
     t.id === id ? { ...t, completado: !t.completado } : t
   ));
 };
